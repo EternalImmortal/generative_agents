@@ -5,7 +5,7 @@ File: execute.py
 Description: This defines the "Act" module for generative agents. 
 """
 import sys
-import random
+
 sys.path.append('../../')
 
 from global_methods import *
