@@ -367,7 +367,7 @@ def generate_new_decomp_schedule(persona, inserted_act, inserted_act_dur, start_
                 truncated_act_dur += [[p.scratch.f_daily_schedule[count][0],
                                        dur_sum - today_min_pass]]
                 truncated_act_dur[-1][-1] -= (
-                            dur_sum - today_min_pass)  ######## DEC 7 DEBUG;.. is the +1 the right thing to do???
+                        dur_sum - today_min_pass)  ######## DEC 7 DEBUG;.. is the +1 the right thing to do???
                 # truncated_act_dur[-1][-1] -= (dur_sum - today_min_pass + 1) ######## DEC 7 DEBUG;.. is the +1 the right thing to do???
                 print("DEBUG::: ", truncated_act_dur)
 
@@ -820,9 +820,9 @@ def _create_react(persona, inserted_act, inserted_act_dur,
     elif (p.scratch.f_daily_schedule_hourly_org[p.scratch.get_f_daily_schedule_hourly_org_index()][1] +
           p.scratch.f_daily_schedule_hourly_org[p.scratch.get_f_daily_schedule_hourly_org_index() + 1][1]):
         end_hour = start_hour + (
-                    (p.scratch.f_daily_schedule_hourly_org[p.scratch.get_f_daily_schedule_hourly_org_index()][1] +
-                     p.scratch.f_daily_schedule_hourly_org[p.scratch.get_f_daily_schedule_hourly_org_index() + 1][
-                         1]) / 60)
+                (p.scratch.f_daily_schedule_hourly_org[p.scratch.get_f_daily_schedule_hourly_org_index()][1] +
+                 p.scratch.f_daily_schedule_hourly_org[p.scratch.get_f_daily_schedule_hourly_org_index() + 1][
+                     1]) / 60)
 
     else:
         end_hour = start_hour + 2
@@ -911,7 +911,7 @@ def _wait_react(persona, reaction_mode):
     inserted_act = f'waiting to start {p.scratch.act_description.split("(")[-1][:-1]}'
     end_time = datetime.datetime.strptime(reaction_mode[6:].strip(), "%B %d, %Y, %H:%M:%S")
     inserted_act_dur = (end_time.minute + end_time.hour * 60) - (
-                p.scratch.curr_time.minute + p.scratch.curr_time.hour * 60) + 1
+            p.scratch.curr_time.minute + p.scratch.curr_time.hour * 60) + 1
 
     act_address = f"<waiting> {p.scratch.curr_tile[0]} {p.scratch.curr_tile[1]}"
     act_event = (p.name, "waiting to start", p.scratch.act_description.split("(")[-1][:-1])
@@ -935,6 +935,8 @@ def plan(persona, maze, personas, new_day, retrieved):
     Main cognitive function of the chain. It takes the retrieved memory and
     perception, as well as the maze and the first day state to conduct both
     the long term and short term planning for the persona.
+    链条的主要认知功能。
+    需要检索到的记忆和感知，以及迷宫和第一天的状态来对角色进行「长期」和「短期规划」。
 
     INPUT:
       maze: Current <Maze> instance of the world.
