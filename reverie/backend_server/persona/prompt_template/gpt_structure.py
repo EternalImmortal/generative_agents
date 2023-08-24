@@ -21,7 +21,7 @@ def temp_sleep(seconds=0.1):
 
 def ChatGPT_single_request(prompt):
     temp_sleep()
-    res = gpt_3_5_turbo(prompt)
+    res = llm(prompt)
     return res
 
 
@@ -31,7 +31,7 @@ def ChatGPT_single_request(prompt):
 
 
 def ChatGPT_request(prompt, gpt_parameter=None):
-    res = gpt_3_5_turbo(prompt)
+    res = llm(prompt, parameters=gpt_parameter)
     return res
 
 
@@ -133,10 +133,8 @@ def GPT_request(prompt, gpt_parameter):
     # except:
     #   print ("TOKEN LIMIT EXCEEDED")
     #   return "TOKEN LIMIT EXCEEDED"
-    if gpt_parameter["temperature"] is not None:
-        res = gpt_3_5_turbo(prompt, temperature=gpt_parameter["temperature"])
-    else:
-        res = gpt_3_5_turbo(prompt)
+    res = llm(prompt, parameters=gpt_parameter)
+
     return res
 
 
